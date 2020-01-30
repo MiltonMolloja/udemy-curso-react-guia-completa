@@ -1,6 +1,6 @@
 import React from "react";
 
-const Producto = ({ producto, productos, carrito, setCarrito }) => {
+const Producto = ({ producto, productos, carrito, setCarrito, index }) => {
   const { id, nombre, precio } = producto;
 
   //Agregar Producto al Carrito
@@ -11,10 +11,9 @@ const Producto = ({ producto, productos, carrito, setCarrito }) => {
     setCarrito([...carrito, producto]);
   };
 
-  const elimnarProducto = id => {      
-      const productos = carrito.filter( producto => producto.id !== id)      
+  const elimnarProducto = index => {      
+      const productos = carrito.filter( (producto, i) => i !== index)      
       setCarrito(productos)
-
   }
 
   return (
@@ -24,7 +23,7 @@ const Producto = ({ producto, productos, carrito, setCarrito }) => {
       </h2>
       <p> ${precio}</p>      
       {productos === undefined ? (
-        <button type="button" onClick={() => elimnarProducto(id)}>
+        <button type="button" onClick={() => elimnarProducto(index)}>
           Eliminar
         </button>
       ) : (

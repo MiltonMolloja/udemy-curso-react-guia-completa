@@ -7,9 +7,10 @@ const Carrito = ({carrito, setCarrito}) => (
         <h2>Tu lista de carrito</h2>
         { carrito.length=== 0 || carrito=== undefined 
             ? 'Su Carrito esta Vacio'
-            : carrito.map( (producto)  => (
+            : carrito.map( (producto, index)  => (
                 <Producto
-                    key={producto.id}
+                    key={index}
+                    index={index}
                     producto={producto}
                     carrito={carrito}
                     setCarrito={setCarrito}/>
